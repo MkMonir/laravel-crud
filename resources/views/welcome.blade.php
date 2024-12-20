@@ -52,92 +52,71 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($products as $product)
                     <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        class="bg-white border-b hover:bg-gray-50">
                         <td class="px-6 py-4">
-                            PID-001
+                            {{ $product->product_id }}
                         </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Miniket Powler Chal
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                            <div class="flex items-center gap-3">
+                                <img src="/images/{{ $product->image }}" alt="{{ $product->name }}" width="40" height="40" class="rounded-full min-w-10 max-w-10 min-h-10 max-h-10 w-full h-full">
+                            <span class="font-semibold">{{ $product->name }}</span>
+                            </div>
                         </th>
                         <td class="px-6 py-4">
-                            50 KG
+                            {{ $product->product_type }}
                         </td>
                         <td class="px-6 py-4">
-                            Rashid
+                            {{ $product->brand }}
                         </td>
                         <td class="px-6 py-4">
-                            $30
+                            ${{ $product->selling_price }}
                         </td>
                         <td class="px-6 py-4">
-                            $32
+                            ${{ $product->purchase_price }}
                         </td>
-                        <td class="px-6 py-4 flex gap-2.5">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            <button class="font-medium text-red-500 dark:text-red-600 hover:underline">Delete</button>
+                        <td class="px-6 py-4">
+                            <div class=" flex gap-2.5">
+                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
+                            <button class="font-medium text-red-500 hover:underline">Delete</button>
+                            </div>
                         </td>
                     </tr>
-
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="px-6 py-4">
-                            PID-002
-                        </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Miniket Powler Chal
-                        </th>
-                        <td class="px-6 py-4">
-                            20 KG
-                        </td>
-                        <td class="px-6 py-4">
-                            Monju
-                        </td>
-                        <td class="px-6 py-4">
-                            $19
-                        </td>
-                        <td class="px-6 py-4">
-                            $21
-                        </td>
-                        <td class="px-6 py-4 flex gap-2.5">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            <button class="font-medium text-red-500 dark:text-red-600 hover:underline">Delete</button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
-
-
 
             <div class="flex justify-end py-3 px-4">
                 <nav aria-label="Page navigation example ">
                     <ul class="inline-flex -space-x-px text-base h-10">
                         <li>
                             <a href="#"
-                                class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+                                class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
                         </li>
                         <li>
                             <a href="#" aria-current="page"
-                                class="flex items-center justify-center px-4 h-10 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+                                class="flex items-center justify-center px-4 h-10 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
                         </li>
                     </ul>
                 </nav>
