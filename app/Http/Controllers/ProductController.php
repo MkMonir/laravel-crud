@@ -41,8 +41,8 @@ class ProductController extends Controller
         $product->image = $image_name;
 
         $product->save();
-
-        return redirect()->route('home')->with('success', 'Product created successfully');
+        flash()->success('Product created successfully');
+        return redirect()->route('home');
     }
 
     public function editProduct($id){
@@ -77,13 +77,14 @@ class ProductController extends Controller
         }
         
         $product->save();
-
-        return redirect()->route('home')->with('success', 'Product updated successfully');
+        flash()->success('Product updated successfully');
+        return redirect()->route('home');
     }
      public function deleteProduct($id){
         $product = Product::find($id);
         $product->delete();
-
-        return redirect()->route('home')->with('success', 'Product deleted successfully');
+        
+        flash()->success('Product deleted successfully');
+        return redirect()->route('home');
     }
 }
