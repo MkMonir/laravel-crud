@@ -53,15 +53,15 @@
                 </thead>
                 <tbody>
                     @foreach ($products as $product)
-                    <tr
-                        class="bg-white border-b hover:bg-gray-50">
+                    <tr class="bg-white border-b hover:bg-gray-50">
                         <td class="px-6 py-4">
                             {{ $product->product_id }}
                         </td>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                             <div class="flex items-center gap-3">
-                                <img src="/images/{{ $product->image }}" alt="{{ $product->name }}" width="40" height="40" class="rounded-full min-w-10 max-w-10 min-h-10 max-h-10 w-full h-full">
-                            <span class="font-semibold">{{ $product->name }}</span>
+                                <img src="/images/{{ $product->image }}" alt="{{ $product->name }}" width="40"
+                                    height="40" class="rounded-full min-w-10 max-w-10 min-h-10 max-h-10 w-full h-full">
+                                <span class="font-semibold">{{ $product->name }}</span>
                             </div>
                         </th>
                         <td class="px-6 py-4">
@@ -78,8 +78,10 @@
                         </td>
                         <td class="px-6 py-4">
                             <div class=" flex gap-2.5">
-                            <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-                            <button class="font-medium text-red-500 hover:underline">Delete</button>
+                                <a href="{{ route('edit', $product->id) }}"
+                                    class="font-medium text-blue-600 hover:underline">Edit</a>
+                                <a href="{{ route('delete', $product->id) }}"
+                                    class="font-medium text-red-500 hover:underline">Delete</a>
                             </div>
                         </td>
                     </tr>
@@ -88,41 +90,45 @@
             </table>
 
             <div class="flex justify-end py-3 px-4">
-                <nav aria-label="Page navigation example ">
+                <nav aria-label="Page navigation example">
                     <ul class="inline-flex -space-x-px text-base h-10">
+                        @if ($products->onFirstPage())
                         <li>
-                            <a href="#"
+                            <span
+                                class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-gray-200 border border-e-0 border-gray-300 rounded-s-lg cursor-not-allowed">Previous</span>
+                        </li>
+                        @else
+                        <li>
+                            <a href="{{ $products->previousPageUrl() }}"
                                 class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
                         </li>
+                        @endif
+
+                        @foreach ($products->getUrlRange(1, $products->lastPage()) as $page => $url)
                         <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
+                            <a href="{{ $url }}"
+                                class="flex items-center justify-center px-4 h-10 {{ $page == $products->currentPage() ? 'text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100' : 'text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700' }}">
+                                {{ $page }}
+                            </a>
                         </li>
+                        @endforeach
+
+                        @if ($products->hasMorePages())
                         <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-                        </li>
-                        <li>
-                            <a href="#" aria-current="page"
-                                class="flex items-center justify-center px-4 h-10 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
-                        </li>
-                        <li>
-                            <a href="#"
+                            <a href="{{ $products->nextPageUrl() }}"
                                 class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
                         </li>
+                        @else
+                        <li>
+                            <span
+                                class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-gray-200 border border-gray-300 rounded-e-lg cursor-not-allowed">Next</span>
+                        </li>
+                        @endif
                     </ul>
                 </nav>
             </div>
-        </div>
 
+        </div>
     </div>
 </body>
 
