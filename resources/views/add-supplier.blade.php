@@ -47,8 +47,8 @@
 
         <div>
             <label class="block mb-2 text-sm font-medium text-gray-900">Phone Work</label>
-            <input type="text" name="g
-                focus:ring-green-500 focus:border-green-500 block w-full p-2.5" />
+            <input type="text" name=""
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5" />
         </div>
 
         <div>
