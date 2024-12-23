@@ -14,3 +14,14 @@ Route::post('/product.store', [ProductController::class, 'createStore'])->name('
 Route::post('/edit-product/{id}', [ProductController::class, 'updateProduct'])->name('edit-product');
 Route::get('/edit/{id}', [ProductController::class, 'editProduct'])->name('edit');
 Route::get('/delete/{id}', [ProductController::class, 'deleteProduct'])->name('delete');
+
+
+// SUPPLIER ROUTES
+
+Route::get('/add-supplier', function () {
+    return view('add-supplier');
+});
+
+Route::get('/supplier-list', function () {
+    return view('supplier-list');
+});
