@@ -1,34 +1,23 @@
 [phases.setup]
-# Include the necessary PHP version and extensions
 nixPkgs = [
-  "php81",
-  "php81Packages.composer",
-  "php81Packages.pdo",
-  "php81Packages.pdo_mysql",
-  "php81Packages.mbstring",
-  "php81Packages.xml",
-  "php81Packages.zip",
+  "php82",
+  "php82Packages.composer",
+  "php82Packages.pdo",
+  "php82Packages.pdo_mysql",
+  "php82Packages.mbstring",
+  "php82Packages.xml",
+  "php82Packages.zip",
   "python311Packages.supervisor"
 ]
 
+
 [phases.build]
 cmds = [
-  # Clear Composer cache
-  "composer clear-cache",
-  
-  # Install Composer dependencies with optimizations
-  "composer install --no-dev --prefer-dist --ignore-platform-reqs --optimize-autoloader --verbose",
-
-  # Set up Supervisor configuration
-  "mkdir -p /etc/supervisor/conf.d/",
-  "cp /assets/worker-*.conf /etc/supervisor/conf.d/",
-  "cp /assets/supervisord.conf /etc/supervisord.conf",
-
-  # Make start.sh script executable
-  "chmod +x /assets/start.sh",
-
-  # Ensure proper permissions for the application directory
-  "chmod -R 755 /app"
+    "mkdir -p /etc/supervisor/conf.d/",
+    "cp /assets/worker-*.conf /etc/supervisor/conf.d/",
+    "cp /assets/supervisord.conf /etc/supervisord.conf",
+    "chmod +x /assets/start.sh",
+    "..."
 ]
 
 [start]
